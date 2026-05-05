@@ -1,0 +1,8 @@
+node_modules/
+*.sqlite
+.env
+build/
+.DS_Store
+
+# NeDB data files (runtime data, not committed)
+backend/data/*.db
