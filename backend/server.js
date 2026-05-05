@@ -24,4 +24,4 @@ app.use('/api/tasks', require('./routes/tasks'));
 
 app.get('/api/health', (req, res) => res.json({ status: 'ok', message: 'TaskFlow API running' }));
 
-app.listen(PORT, () => console.log(`TaskFlow server running on http://localhost:${PORT}`));
+app.listen(PORT, '0.0.0.0', () => console.log(`TaskFlow server running on port ${PORT}`));
