@@ -1,7 +1,15 @@
 const Datastore = require('@seald-io/nedb');
 const path = require('path');
+const fs = require('fs');
 
-const dbPath = path.join(__dirname, '../data');
+const dbPath = process.env.NODE_ENV === 'production'
+  ? path.join('/tmp', 'taskflow-data')
+  : path.join(__dirname, '../data');
+
+// Ensure the data directory exists
+if (!fs.existsSync(dbPath)) {
+  fs.mkdirSync(dbPath, { recursive: true });
+}
 
 const db = {
   users: new Datastore({ filename: path.join(dbPath, 'users.db'), autoload: true }),
